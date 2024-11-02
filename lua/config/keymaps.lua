@@ -43,6 +43,3 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   group = vim.api.nvim_create_augroup("go_autocommands", { clear = true }),
 })
-
--- TELESCOPE OVERRIDES
-map("n", "<leader>fx", require("telescope.builtin").resume, { remap = false, desc = "Resume telescope" })
