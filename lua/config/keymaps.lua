@@ -27,6 +27,9 @@ map("n", "•", "<Cmd>BufferGoto 8<CR>", { remap = false, desc = "Focus buffer i
 map("n", "ª", "<Cmd>BufferGoto 9<CR>", { remap = false, desc = "Focus buffer in position 9" })
 map("n", "º", "<Cmd>BufferLast<CR>", { remap = false, desc = "Focus buffer in position 9" })
 
+-- UNDOTREE
+map("n", "<F5>", "<Cmd>UndotreeToggle<CR>", { remap = false, desc = "Toggle undo tree" })
+
 -- GO CONFIG
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "go" },
