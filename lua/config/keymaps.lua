@@ -29,20 +29,3 @@ map("n", "º", "<Cmd>BufferLast<CR>", { remap = false, desc = "Focus buffer in p
 
 -- UNDOTREE
 map("n", "<F5>", "<Cmd>UndotreeToggle<CR>", { remap = false, desc = "Toggle undo tree" })
-
--- GO CONFIG
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "go" },
-  callback = function(ev)
-    -- CTRL/control keymaps
-    vim.api.nvim_buf_set_keymap(0, "n", "<C-i>", ":GoImports<CR>", {})
-    vim.api.nvim_buf_set_keymap(0, "n", "<C-b>", ":GoBuild %:h<CR>", {}) -- build current package
-    vim.api.nvim_buf_set_keymap(0, "n", "<C-t>", ":GoTest -v -F<CR>", {}) -- go test -v current file
-    vim.api.nvim_buf_set_keymap(0, "n", "<C-c>", ":GoCoverage -p<CR>", {}) -- test current file with coverage
-
-    -- Opens test files
-    vim.api.nvim_buf_set_keymap(0, "n", "A", ":lua require('go.alternate').switch(true, '')<CR>", {}) -- Test
-    vim.api.nvim_buf_set_keymap(0, "n", "V", ":lua require('go.alternate').switch(true, 'vsplit')<CR>", {}) -- Test Vertical
-  end,
-  group = vim.api.nvim_create_augroup("go_autocommands", { clear = true }),
-})
