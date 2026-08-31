@@ -1,0 +1,32 @@
+lua/plugins/colorscheme.lua
+  s_422182f6244e3d::t_604d6422180ef5 2-28
+lua/config/options.lua
+  s_422182f6244e3d::t_604d6422180ef5 4
+lua/config/keymaps.lua
+  s_422182f6244e3d::t_f985acc5baaf13 4,7,11-12,14-15,17,19-54,57
+README.md
+  s_422182f6244e3d::t_604d6422180ef5 20-22,30,33-44
+  s_422182f6244e3d::t_14f6861cb77fdc 8
+lua/plugins/bufferline.lua
+  s_422182f6244e3d::t_f985acc5baaf13 2-5
+lazy-lock.json
+  s_422182f6244e3d::t_aab1b7266e62a5 17
+lazyvim.json
+  s_422182f6244e3d::t_604d6422180ef5 16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "1b20b0bb3388c3be62608a5071962983433a85da",
+  "prompts": {},
+  "sessions": {
+    "s_422182f6244e3d": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fa8abd400ffe4mE5qWXikTwv1F",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Dani Medina <dani@medinag.me>"
+    }
+  }
+}
