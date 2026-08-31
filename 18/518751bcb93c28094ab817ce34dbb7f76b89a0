@@ -1,0 +1,34 @@
+README.md
+  s_422182f6244e3d::t_b4b766c849a2ed 20
+  s_422182f6244e3d::t_14f6861cb77fdc 8
+  s_422182f6244e3d::t_604d6422180ef5 21-22,30,33-44
+lua/plugins/bufferline.lua
+  s_422182f6244e3d::t_f985acc5baaf13 2-5
+lua/config/options.lua
+  s_422182f6244e3d::t_604d6422180ef5 4
+lua/plugins/colorscheme.lua
+  s_422182f6244e3d::t_604d6422180ef5 2-28
+lazy-lock.json
+  s_422182f6244e3d::t_aab1b7266e62a5 17
+lua/config/keymaps.lua
+  s_422182f6244e3d::t_f985acc5baaf13 4,7,11-12,16-17,21,23-32,43-68,71
+  s_422182f6244e3d::t_b4b766c849a2ed 13-14,18-19,33-42
+lazyvim.json
+  s_422182f6244e3d::t_604d6422180ef5 16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "18518751bcb93c28094ab817ce34dbb7f76b89a0",
+  "prompts": {},
+  "sessions": {
+    "s_422182f6244e3d": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fa8abd400ffe4mE5qWXikTwv1F",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": null
+    }
+  }
+}
