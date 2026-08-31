@@ -1,0 +1,19 @@
+lua/config/keymaps.lua
+  s_0c92b5babefb04::t_b73a48fb4aa3d7 9-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "d07aa31aad9f1849179c377836c307c0d0d63c4a",
+  "prompts": {},
+  "sessions": {
+    "s_0c92b5babefb04": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fa7cdff29ffev64q4NMjeiXi04",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Dani Medina <dani@medinag.me>"
+    }
+  }
+}
