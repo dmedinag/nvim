@@ -1,0 +1,21 @@
+lazy-lock.json
+  s_7a01629489bcee::t_fe4495eec48c02 46
+  s_7a01629489bcee::t_3fe24842d2e2ca 53
+  s_7a01629489bcee::t_ae17e8db8e4a76 3,8-10,13,15-16,18,26,34-36,38,43-44,49,52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "d7d3a428ba896992102ce309e23113cb1d78ca1d",
+  "prompts": {},
+  "sessions": {
+    "s_7a01629489bcee": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fa8c0e7a5ffefsJDF0qf7Byijs",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Dani Medina <dani@medinag.me>"
+    }
+  }
+}
