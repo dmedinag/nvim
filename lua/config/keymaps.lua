@@ -6,6 +6,16 @@ local map = vim.keymap.set
 -- escape with kj
 map("i", "kj", "<Esc>", { desc = "Escape" })
 
+map("n", "<leader>fd", function()
+  local file = vim.api.nvim_buf_get_name(0)
+  if file == "" then
+    vim.notify("Current buffer has no file", vim.log.levels.WARN)
+    return
+  end
+
+  Snacks.terminal(nil, { cwd = vim.fs.dirname(file) })
+end, { desc = "Terminal (File Dir)" })
+
 -- BUFFER MOTIONS
 -- Move to previous/next
 map("n", "<M-,>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Focus previous buffer" })
