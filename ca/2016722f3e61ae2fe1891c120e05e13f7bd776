@@ -1,0 +1,19 @@
+lua/config/lazy.lua
+  s_7a01629489bcee::t_3fdedfa15529ed 3,59-62
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "ca2016722f3e61ae2fe1891c120e05e13f7bd776",
+  "prompts": {},
+  "sessions": {
+    "s_7a01629489bcee": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fa8c0e7a5ffefsJDF0qf7Byijs",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Dani Medina <dani@medinag.me>"
+    }
+  }
+}
