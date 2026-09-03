@@ -1,0 +1,52 @@
+lazy-lock.json
+  s_2af6f2745858bd::t_8aa40e99c8fb95 40,47
+README.md
+  s_2af6f2745858bd::t_771cbcd21fa5ba 7,29-37,48-69,71-97
+  s_2af6f2745858bd::t_b668ae175945df 98,102
+  s_2af6f2745858bd::t_d40fb23a6325b3 41
+  s_2af6f2745858bd::t_dab97445997e37 99-101
+  s_2af6f2745858bd::t_31141012b3e08f 70
+  s_2af6f2745858bd::t_46e63ae7d83be2 103
+  s_2af6f2745858bd::t_a44c3cb65e93e9 104-107
+  s_2af6f2745858bd::t_b0e82c6a29c9c3 38-40
+  s_2af6f2745858bd::t_e7b8043e5a6c4a 42-47
+  s_2af6f2745858bd::t_f82834c365b5a4 108
+lazyvim.json
+  s_2af6f2745858bd::t_771cbcd21fa5ba 6,13
+lua/plugins/jvm.lua
+  s_2af6f2745858bd::t_dab97445997e37 46-64,66-89,145
+  s_2af6f2745858bd::t_46e63ae7d83be2 7-8,90-118,163-164,216-223,229-238,243-246
+  s_2af6f2745858bd::t_92ca953483969d 175-176
+  s_2af6f2745858bd::t_836aabe88857df 264-277
+  s_2af6f2745858bd::t_771cbcd21fa5ba 1-3,5-6,120-126,129,132-144,146-161,247-257,259-263,278-280
+  s_2af6f2745858bd::t_d40fb23a6325b3 26-45,185-188
+  s_2af6f2745858bd::t_cddc6a1c89b7cb 193-195,197-199
+  s_2af6f2745858bd::t_a8f83e9a390288 192,200
+  s_2af6f2745858bd::t_823bb3d7b9b054 65
+  s_2af6f2745858bd::t_b668ae175945df 162,165-168,206-209,211,213-215
+  s_2af6f2745858bd::t_b745b4b63aa9ef 174,177-178
+  s_2af6f2745858bd::t_b0e82c6a29c9c3 9-25,169-173,179-184,201-203,205
+  s_2af6f2745858bd::t_31141012b3e08f 4,119,127-128,130-131,258
+  s_2af6f2745858bd::t_a3e659a7fd626b 210
+  s_2af6f2745858bd::t_b801793329649d 196,212
+  s_2af6f2745858bd::t_e7b8043e5a6c4a 189-191
+  s_2af6f2745858bd::t_d65eb2b6150411 224-228
+  s_2af6f2745858bd::t_f3ae1979f6c197 204
+  s_2af6f2745858bd::t_a44c3cb65e93e9 239-242
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "14e8e20c3cb6b67066e455dcd46d14fae427575f",
+  "prompts": {},
+  "sessions": {
+    "s_2af6f2745858bd": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_f99f08a19fferEIOOr2ew59NX9",
+        "model": "gpt-5.6-sol"
+      },
+      "human_author": "Dani Medina <dani@medinag.me>"
+    }
+  }
+}
