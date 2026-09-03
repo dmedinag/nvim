@@ -6,31 +6,89 @@ end
 
 local spotless_cache = {}
 
-local function jdtls_java()
-  local configured = vim.env.JDTLS_JAVA_HOME
-  if configured and vim.fn.executable(configured .. "/bin/java") == 1 then
-    return configured .. "/bin/java"
+local function valid_java_home(path)
+  if not path or path == "" then
+    return nil
   end
 
-  local sdkman = vim.env.SDKMAN_CANDIDATES_DIR or vim.fn.expand("~/.sdkman/candidates")
-  local candidates = vim.fn.glob(sdkman .. "/java/21*", false, true)
-  table.sort(candidates)
-  for i = #candidates, 1, -1 do
-    local java = candidates[i] .. "/bin/java"
-    if vim.fn.executable(java) == 1 then
-      return java
-    end
+  local resolved = vim.uv.fs_realpath(vim.fn.expand(path))
+  if resolved and vim.fn.executable(resolved .. "/bin/java") == 1 then
+    return resolved
   end
 end
 
-local function jdtls_runtimes()
+local function add_java_home(candidates, seen, path)
+  local resolved = valid_java_home(path)
+  if resolved and not seen[resolved] then
+    seen[resolved] = true
+    table.insert(candidates, resolved)
+  end
+end
+
+local function asdf_java_home()
+  if vim.fn.executable("asdf") ~= 1 then
+    return
+  end
+
+  local output = vim.fn.systemlist({ "asdf", "where", "java" })
+  if vim.v.shell_error == 0 then
+    return output[1]
+  end
+end
+
+local function java_homes()
+  local candidates = {}
+  local seen = {}
   local sdkman = vim.env.SDKMAN_CANDIDATES_DIR or vim.fn.expand("~/.sdkman/candidates")
+  local asdf = vim.env.ASDF_DATA_DIR or vim.fn.expand("~/.asdf")
+
+  add_java_home(candidates, seen, vim.env.JDTLS_JAVA_HOME)
+  add_java_home(candidates, seen, vim.env.JAVA_HOME)
+  add_java_home(candidates, seen, asdf_java_home())
+  add_java_home(candidates, seen, sdkman .. "/java/current")
+
+  for _, path in ipairs(vim.fn.glob(sdkman .. "/java/*", false, true)) do
+    add_java_home(candidates, seen, path)
+  end
+  for _, path in ipairs(vim.fn.glob(asdf .. "/installs/java/*", false, true)) do
+    add_java_home(candidates, seen, path)
+  end
+
+  return candidates
+end
+
+local function jdtls_java()
+  local configured = valid_java_home(vim.env.JDTLS_JAVA_HOME)
+  if configured then
+    return configured .. "/bin/java"
+  end
+
+  local candidates = {}
+  for _, path in ipairs(java_homes()) do
+    if vim.fs.basename(path):match("21") then
+      table.insert(candidates, path)
+    end
+  end
+  table.sort(candidates)
+  for i = #candidates, 1, -1 do
+    return candidates[i] .. "/bin/java"
+  end
+end
+
+local function project_java_home()
+  return valid_java_home(vim.env.JAVA_HOME)
+    or valid_java_home(asdf_java_home())
+    or valid_java_home((vim.env.SDKMAN_CANDIDATES_DIR or vim.fn.expand("~/.sdkman/candidates")) .. "/java/current")
+end
+
+local function jdtls_runtimes()
   local runtimes = {}
   local seen = {}
 
-  for _, path in ipairs(vim.fn.glob(sdkman .. "/java/*", false, true)) do
+  for _, path in ipairs(java_homes()) do
     local resolved = vim.uv.fs_realpath(path)
     local version = vim.fs.basename(path):match("^(%d+)")
+      or vim.fs.basename(path):match("[^%d](%d+)")
     if resolved and version and not seen[resolved] and vim.fn.executable(resolved .. "/bin/java") == 1 then
       seen[resolved] = true
       table.insert(runtimes, {
@@ -176,10 +234,11 @@ return {
       opts.cmd[1] = vim.fn.executable(homebrew_jdtls) == 1 and homebrew_jdtls or mason .. "/bin/jdtls"
       opts.cmd[2] = "--jvm-arg=-javaagent:" .. mason .. "/share/jdtls/lombok.jar"
 
-      -- Keep the language server on Java 21, but import Gradle with the SDKMAN-selected project JDK.
-      if vim.env.JAVA_HOME then
+      -- Keep the language server on Java 21, but import Gradle with the selected project JDK.
+      local project_java = project_java_home()
+      if project_java then
         opts.settings.java.import = {
-          gradle = { java = { home = vim.env.JAVA_HOME } },
+          gradle = { java = { home = project_java } },
         }
       end
       opts.settings.java.configuration = {
