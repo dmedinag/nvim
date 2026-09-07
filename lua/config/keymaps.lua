@@ -79,3 +79,5 @@ end, { desc = "Go Build" })
 
 -- UNDOTREE
 map("n", "<F5>", "<Cmd>UndotreeToggle<CR>", { desc = "Toggle undo tree" })
+
+require("config.markdown")
