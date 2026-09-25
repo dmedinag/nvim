@@ -1,0 +1,14 @@
+lazy-lock.json
+  h_ac7082325d795e 45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "2dccad1b489971d36237db8e6de3a0ce8483aa23",
+  "prompts": {},
+  "humans": {
+    "h_ac7082325d795e": {
+      "author": "Dani Medina <dani@medinag.me>"
+    }
+  }
+}
