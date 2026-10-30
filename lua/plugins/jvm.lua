@@ -42,7 +42,6 @@ local function java_homes()
   local sdkman = vim.env.SDKMAN_CANDIDATES_DIR or vim.fn.expand("~/.sdkman/candidates")
   local asdf = vim.env.ASDF_DATA_DIR or vim.fn.expand("~/.asdf")
 
-  add_java_home(candidates, seen, vim.env.JDTLS_JAVA_HOME)
   add_java_home(candidates, seen, vim.env.JAVA_HOME)
   add_java_home(candidates, seen, asdf_java_home())
   add_java_home(candidates, seen, sdkman .. "/java/current")
@@ -57,28 +56,15 @@ local function java_homes()
   return candidates
 end
 
-local function jdtls_java()
-  local configured = valid_java_home(vim.env.JDTLS_JAVA_HOME)
-  if configured then
-    return configured .. "/bin/java"
-  end
-
-  local candidates = {}
-  for _, path in ipairs(java_homes()) do
-    if vim.fs.basename(path):match("21") then
-      table.insert(candidates, path)
-    end
-  end
-  table.sort(candidates)
-  for i = #candidates, 1, -1 do
-    return candidates[i] .. "/bin/java"
-  end
-end
-
 local function project_java_home()
   return valid_java_home(vim.env.JAVA_HOME)
     or valid_java_home(asdf_java_home())
     or valid_java_home((vim.env.SDKMAN_CANDIDATES_DIR or vim.fn.expand("~/.sdkman/candidates")) .. "/java/current")
+end
+
+local function jdtls_java()
+  local home = project_java_home()
+  return home and home .. "/bin/java"
 end
 
 local function jdtls_runtimes()
@@ -234,7 +220,7 @@ return {
       opts.cmd[1] = vim.fn.executable(homebrew_jdtls) == 1 and homebrew_jdtls or mason .. "/bin/jdtls"
       opts.cmd[2] = "--jvm-arg=-javaagent:" .. mason .. "/share/jdtls/lombok.jar"
 
-      -- Keep the language server on Java 21, but import Gradle with the selected project JDK.
+      -- Run the language server and Gradle importer with the shell's selected project JDK.
       local project_java = project_java_home()
       if project_java then
         opts.settings.java.import = {

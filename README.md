@@ -35,13 +35,14 @@ is currently alpha. The first project import can take a while, especially for a
 large multi-module build.
 
 Launch Neovim from a shell where SDKMAN has selected the desired JDK. Language
-servers and Gradle tasks inherit that shell's `JAVA_HOME`. `jdtls` itself uses an
-installed SDKMAN Java 21 because newer JDKs can be incompatible with its Eclipse
-runtime, while its Gradle importer still uses the project JDK selected by SDKMAN.
+servers and Gradle tasks inherit that shell's `JAVA_HOME`. Both `jdtls` and its
+Gradle importer use that selected JDK, with no separately pinned Java version.
+For directory-specific SDKMAN environments, run `sdk env` (or enable SDKMAN's
+auto-env) before launching Neovim. The selected JDK must meet the installed
+`jdtls` version's runtime requirements.
 All installed SDKMAN JDKs are registered with `jdtls`, allowing Gradle toolchains
 to resolve their standard libraries. JDT's Gradle Kotlin support is enabled so
-Java sources can resolve Kotlin classes in mixed-language modules. Set
-`JDTLS_JAVA_HOME` to override the Java 21 runtime lookup. Gradle commands always
+Java sources can resolve Kotlin classes in mixed-language modules. Gradle commands always
 use the project's `./gradlew`; a global Gradle installation is not required. The
 Gradle 9.4 wrapper used by current projects is explicitly trusted so `jdtls` can
 import them without an interactive checksum prompt.
