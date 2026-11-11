@@ -5,6 +5,7 @@
   - [Quick tips](#quick-tips)
     - [Functional](#functional)
     - [Java, Kotlin, and Gradle](#java-kotlin-and-gradle)
+    - [Nix](#nix)
     - [Appearance](#appearance)
   - [Arch Linux prerequisites](#arch-linux-prerequisites)
 <!--toc:end-->
@@ -106,6 +107,22 @@ version catalog, Java and Kotlin formatting use the project's `spotlessApply`
 task. Standalone `ktlint` diagnostics are disabled in those projects to avoid
 conflicting Kotlin rules. Kotlin projects without Spotless fall back to `ktlint`;
 Java projects without Spotless fall back to JDTLS formatting.
+
+### Nix
+
+Nix support uses LazyVim's Nix extra: Treesitter highlighting, the `nil` language
+server for completion and navigation, `nixfmt` formatting, and `statix` linting.
+
+With Nix installed, make the tools available on your shell's `PATH` before
+launching Neovim (or provide them through your project's development shell):
+
+```sh
+nix profile install nixpkgs#nil nixpkgs#nixfmt nixpkgs#statix
+```
+
+Open a `.nix` file to activate support. Use `<leader>cl` to inspect the language
+server and `:ConformInfo` to check formatter availability. Formatting follows
+LazyVim's normal format-on-save behavior.
 
 ### Appearance
 
